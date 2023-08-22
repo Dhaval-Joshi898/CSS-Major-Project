@@ -1,0 +1,130 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins', sans-serif;
+    
+}
+#banner{
+    background:linear-gradient(rgb(0, 0,0, 0.5),#009688) ,url(images/banner.jpg);
+    height: 100vh;   /* this is added to and agter adding this we can see the img */
+    /* background-size:contain ; --> this will cover the image IF we put contain then in mobile scrren it replicates more than two image */
+    /* background-repeat: no-repeat; -->  if i put no repeat then the images will not be full it will be half in center that isupper and lower spaces are white the images is in wide mode as in films */
+    background-size:cover;
+    background-position: center;
+}
+.logo{
+    width:140px;
+    position: absolute;
+    top:4%;
+    left: 10%;
+}
+.banner-text{
+    text-align: center;
+    color: white;
+    padding-top: 180px;
+}
+.banner-text h1{
+    font-size: 130px;
+    font-family: 'Kaushan Script', cursive;
+}
+.banner-text p{
+    font-size: 20px;
+    font-style:italic;
+}
+.banner-btn{
+    margin:70px auto;
+}
+.banner-btn a{
+    width:150px;
+    text-decoration: none;
+    display:inline-block;  /* display inline block beacuse button will have height and anchor are only inline elements*/
+    color: #fff;
+    margin:0 10px;
+    border:0.5px solid white;
+    padding:12px 0;  /* padding from (top bottom) and (left right)*/
+    position: relative;
+    z-index: 1; /*  positive no because i want it to bribng forward */
+}
+.banner-btn a span{
+    width:0;
+    height: 100%;
+    background-color:white;
+    position: absolute;   /*this will be relative to anchor tag(a)*/
+    /* -------------------------------- */
+     top:0;   
+    left:0;
+    /* but when width is 50% in a span to check it will be 0 but to applyt hese it was 50%; */
+     /* try changing the value you will get to know relative to button border changing positon to button border */
+    /* ------------------------------------------------------------ */
+     z-index: -1;  /*negative z index  value becuase i wnat it to be behind */
+    transition: 0.5s ease-in-out;
+
+}
+/* . Elements with higher z-index values will appear on top of elements with lower z-index values. Here's how the z-index values are used in your code:
+
+.banner-btn a:
+
+z-index: 1;
+This rule sets the z-index of the anchor (<a>) elements inside elements with the class .banner-btn. Anchors with this rule will be positioned above elements with lower z-index values and the default stacking order.
+.banner-btn a span:
+
+z-index: -1;
+This rule sets the z-index of the <span> elements inside anchor elements inside .banner-btn. This means that the <span> elements will be positioned below their parent anchor elements and other elements with z-index values greater than -1.
+In this specific code, the use of z-index values is a bit unconventional and can lead to unexpected behavior. Generally, it's more common to use positive z-index values for elements that you want to bring to the front and negative values for elements that should be pushed to the back. However, in this code, the <span> elements inside the anchors have a z-index of -1, which means they are placed behind the anchor text and any other elements with positive z-index values.
+
+The purpose of using the negative z-index in this case is to allow the <span> elements to be positioned behind the anchor text, creating a hover effect. When the user hovers over an anchor, the width of the <span> increases from 0 to 100%, thereby creating a visual effect that seems like a background color filling in from the left to the right. */
+
+.banner-btn a:hover span{
+    width: 100%;
+    background-color:#026f6467;
+}
+.banner-btn a:hover{
+    color:white;
+   box-shadow: 2px 2px 3px 1px ;   /*   Xoffset yoffset blur spread */
+}
+#sideNav{
+    width: 220px;
+    height: 100vh;
+    position:fixed;
+    right: -250px;  /* in js code when it will be -250 px it will be then o right and it will be seem OTHERWISE it will be hiddden unless and UNtil we click*/
+    top:0;
+    background:#009688;
+    z-index: 2;
+    transition: 0.5s;
+}
+nav ul li{
+    list-style: none;
+    margin:50px 20px;
+}
+nav ul li a{
+    text-decoration: none;
+    color:white;
+}
+#menuBtn{     /*div width and height set*/
+    width:50px;
+    height: 50px;
+    background: #009688;
+    text-align: center;
+    position: fixed;
+    right: 30px;
+    top:20px;
+    border-radius:3px ;
+    cursor:pointer;
+    z-index:3;  /*z index is given ebcause the nav was overriding it means it was behind nav items*/
+}
+#menuBtn img{
+    width: 20px;
+    margin-top: 15px;
+   
+}
+
+@media screen and (max-width:770px){
+    .banner-text h1{
+        font-size: 80px;
+        font-family: 'Kaushan Script', cursive;
+    }
+    .banner-btn a{
+      display: block;  /*when viewing in mobile this are inline so not look good cover whole line*/
+      margin:30px auto;  /*auto to center horizontal margin*/
+    }
+}
